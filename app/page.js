@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   // You will need to put a state here to save all the dogs data into
-  const [dogList , setNumberOfDogs]=useState([])
-  const [inputText, setInputText] = useState(0);
+  const [dogsList , setNumberOfDogs]=useState([])
+  const [inputText, setInputText] = useState('');
 
   // And you will fetch the data with useEffect
   useEffect(()=>{
@@ -28,7 +28,7 @@ export default function Home() {
       */}
       <Form setNumberOfDogs={setNumberOfDogs} setInputText={setInputText} inputText={inputText} /> 
       {/* This page should receive the images array */}
-      <DogList dogList={dogList} />
+      <DogList dogsList={dogsList} />
     </div>
   );
 }

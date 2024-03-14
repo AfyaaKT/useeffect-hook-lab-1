@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 
 export default function Form({ setNumberOfDogs , setInputText , inputText }) {
@@ -6,7 +7,7 @@ export default function Form({ setNumberOfDogs , setInputText , inputText }) {
 setNumberOfDogs(inputText)
   }
   return (
-    <form >
+    <form>
       <h3>Number of cute dogs is infinite!</h3>
       <div className="mb-3">
         <label>Insert number of cute dogs</label>
