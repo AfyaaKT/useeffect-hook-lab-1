@@ -1,12 +1,12 @@
-import { useState } from "react";
 
 
-export default function Form({ setNumberOfDogs }) {
+export default function Form({ setNumberOfDogs , setInputText , inputText }) {
   // How can we manage the number of dogs?
-
-  const [inputText, setInputText] = useState("");
+  function handleClick(){
+setNumberOfDogs(inputText)
+  }
   return (
-    <form>
+    <form >
       <h3>Number of cute dogs is infinite!</h3>
       <div className="mb-3">
         <label>Insert number of cute dogs</label>
@@ -24,6 +24,7 @@ export default function Form({ setNumberOfDogs }) {
           onClick={(e) => {
             e.preventDefault();
             // When we click on the WOOF! button, what happens?
+            handleClick()
           }}
           type="submit"
           className="btn btn-primary"

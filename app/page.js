@@ -1,3 +1,5 @@
+"use client"
+import { useEffect, useState } from 'react'
 import DogList from '../Components/DogList/DogList'
 import Form from '../Components/Form/Form'
 import { Inter } from 'next/font/google'
@@ -7,7 +9,16 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   // You will need to put a state here to save all the dogs data into
+  const [dogList , setNumberOfDogs]=useState([])
+  const [inputText, setInputText] = useState(0);
+
   // And you will fetch the data with useEffect
+  useEffect(()=>{
+    fetch('https://dog.ceo/api/breeds/image/random/' + inputText)
+    .then((res)=> res.json())
+    .then((data)=>setNumberOfDogs(data.message))
+
+  }, [inputText])
 
    return (
     <div className="card">
@@ -15,9 +26,9 @@ export default function Home() {
           How can we do that by utilizing useState?
           
       */}
-      {/* <Form /> Uncomment <Form /> if you are going after the bonus */}
+      <Form setNumberOfDogs={setNumberOfDogs} setInputText={setInputText} inputText={inputText} /> 
       {/* This page should receive the images array */}
-      <DogList />
+      <DogList dogList={dogList} />
     </div>
   );
 }
